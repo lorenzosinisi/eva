@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "eva"
   spec.version       = Eva::VERSION
   spec.authors       = ["Lorenzo Sinisi"]
-  spec.email         = ["lasslo.net@gmail.com"]
+  spec.email         = ["info@lorenzosinisi.com"]
 
   spec.summary       = %q{Eva.}
   spec.description   = %q{Her.}
