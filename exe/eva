@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'eva'
+require 'optparse'
+
+options = {}
+
+option_parser = OptionParser.new do |opts|
+  executable_name = File.basename($PROGRAM_NAME)
+  opts.banner = "
+    Eva speaks to you.
+
+    Usage: #{executable_name} [options] text
+  "
+
+  opts.on('-e', '--example', 'Example argument') do
+    options[:example] = true
+  end
+
+  # opts.on('--all', 'Spy on every metadata at once') do
+  #   options[:all] = true
+  # end
+end
+  
+begin
+  option_parser.parse!
+  rescue OptionParser::InvalidOption => error
+  puts "Eva doesn't recognize that #{ error }"
+  exit
+  rescue OptionParser::AmbiguousOption => error
+  puts "That's an #{ error}"
+  exit
+end
+
+if ARGV.empty?
+  puts "    error: you must say something."
+  puts option_parser.help
+else
+  text = ARGV[0]
+end
